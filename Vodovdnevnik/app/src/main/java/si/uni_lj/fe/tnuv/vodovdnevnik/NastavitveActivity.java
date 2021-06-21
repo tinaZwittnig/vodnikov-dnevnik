@@ -5,34 +5,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class NastavitveActivity extends AppCompatActivity {
 
     public static final String SHRANJENO = "si.uni_lj.fe.tnuv.vodovdnevnik.SHRANJENO";
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nastavitve);
         setSpinner();
-        setListView();
         addOtrok();
         addListenerOnShrani();
+        String urlOtroci = getString(R.string.urlOtrok);
+        new AsyncTaskExecutor().execute(new PrenosPodatkov(urlOtroci, this),
+                this::setListView);
     }
 
     public void setSpinner() {
@@ -45,56 +44,59 @@ public class NastavitveActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
     }
 
-    public void setListView() {
-        String[] mobileArray = {"Android", "IPhone", "WindowsMobile", "Blackberry",
-                "WebOS", "Ubuntu", "Windows7", "Max OS X"};
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.activity_listview, mobileArray);
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void setListView(String kontakti) {
+        ListView listotroci = findViewById(R.id.otroci_prikaz);
+        ArrayList<HashMap<String, String>> seznamKontaktov = new OtrociJsonParser().parseToArrayList(kontakti);
+        SimpleAdapter adapter = new SimpleAdapter(this,
+                seznamKontaktov,
+                R.layout.activity_listview,
+                new String[]{"ime"},
+                new int[] {R.id.name}
+        );
 
-        ListView listView = findViewById(R.id.otroci_prikaz);
-        listView.setAdapter(adapter);
+        listotroci.setAdapter(adapter);
+        listotroci.callOnClick();
+        listotroci.setOnItemClickListener((arg0, arg1, position, arg3) -> {
+AlertDialog.Builder builder = new AlertDialog.Builder(NastavitveActivity.this);
+String naslov = String.valueOf(seznamKontaktov.get(position));
+builder.setTitle(naslov);
+builder.setView(R.layout.list_item);
+builder.setPositiveButton(getString(R.string.uredi), (dialog, which) -> {
+
+});
+builder.setNegativeButton(getString(R.string.izbrisi), (dialog, which) -> dialog.cancel());
+
+builder.show();
+});
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void addOtrok() {
-        final Context context = this;
         ImageButton button = findViewById(R.id.dodaj_gumb);
-        button.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle(getString(R.string.dodaj_otroka));
-                builder.setView(R.layout.add_otrok);
-                builder.setPositiveButton(getString(R.string.shrani), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        button.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(NastavitveActivity.this);
+            builder.setTitle(getString(R.string.dodaj_otroka));
+            builder.setView(R.layout.add_otrok);
+            builder.setPositiveButton(getString(R.string.shrani), (dialog, which) -> {
 
-                    }
-                });
-                builder.setNegativeButton(getString(R.string.preklici), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+            });
+            builder.setNegativeButton(getString(R.string.preklici), (dialog, which) -> dialog.cancel());
 
-                builder.show();
-            }
+            builder.show();
         });
     }
     public void addListenerOnShrani() {
         final Context context = this;
         Button button = findViewById(R.id.shrani_nastavitve);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra(SHRANJENO, R.string.nastavitve_shranjene);
-                startActivity(intent);
+        button.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.putExtra(SHRANJENO, getString(R.string.nastavitve_shranjene));
+            startActivity(intent);
 
 
-            }
         });
     }
+
 
 }

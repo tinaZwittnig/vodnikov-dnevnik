@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingEnd="24dp"
+    android:paddingStart="24dp"
     tools:context=".VsaSrecanjaActivity">
     <TextView
         android:id="@+id/vsa_preteka"
@@ -18,9 +20,9 @@
     <ListView
         android:id="@+id/seznam_vseh_srecanj"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seznam_vseh_srecanj"/>
+        app:layout_constraintTop_toBottomOf="@id/vsa_preteka"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
