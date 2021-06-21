@@ -51,27 +51,27 @@ public class NastavitveActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
                 R.layout.activity_listview, mobileArray);
 
-        ListView listView = (ListView) findViewById(R.id.otroci_prikaz);
+        ListView listView = findViewById(R.id.otroci_prikaz);
         listView.setAdapter(adapter);
     }
 
     public void addOtrok() {
         final Context context = this;
-        ImageButton button = (ImageButton) findViewById(R.id.dodaj_gumb);
+        ImageButton button = findViewById(R.id.dodaj_gumb);
         button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(NastavitveActivity.this);
-                builder.setTitle("Dodaj otroka");
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle(getString(R.string.dodaj_otroka));
                 builder.setView(R.layout.add_otrok);
-                builder.setPositiveButton("shrani", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(getString(R.string.shrani), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
                 });
-                builder.setNegativeButton("Prekliči", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(getString(R.string.preklici), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
@@ -84,12 +84,12 @@ public class NastavitveActivity extends AppCompatActivity {
     }
     public void addListenerOnShrani() {
         final Context context = this;
-        Button button = (Button) findViewById(R.id.shrani_nastavitve);
+        Button button = findViewById(R.id.shrani_nastavitve);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, MainActivity.class);
-                intent.putExtra(SHRANJENO, "Nastavitve shranjene");
+                intent.putExtra(SHRANJENO, R.string.nastavitve_shranjene);
                 startActivity(intent);
 
 

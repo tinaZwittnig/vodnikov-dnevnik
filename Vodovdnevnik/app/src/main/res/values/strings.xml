@@ -40,6 +40,9 @@
     <string name="telefonska_label">telefonska številka staršev:</string>
     <string name="napaka_omrezje">Preverite ali imate vlkjučen WiFi ali mobilne podatke</string>
     <string name="napaka_povezava">Povezava s strežnikom ni uspela</string>
+    <string name="nastavitve_shranjene">Nastavitve shranjene!</string>
+    <string name="dodaj_otroka">Dodaj otroka</string>
+    <string name="preklici">Prekliči</string>
     <string-array name="prostori_seznam">
         <item>zunaj</item>
         <item>na šoli</item>
