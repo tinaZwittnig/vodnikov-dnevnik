@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".DodajSrecanjeActivity">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+            <!-- Content here -->
+
+            <TextView
+                android:id="@+id/dodaj_heading"
+                style="@style/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:text="@string/dodaj_label" />
+
+            <TextView
+                android:id="@+id/datum_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:labelFor="@id/datum_input"
+                android:text="@string/datum_label"
+                android:textAlignment="textEnd" />
+
+            <Button
+                android:id="@+id/datum_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/datum"
+                android:hint="@string/datum"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:gravity="start"
+                android:textColor="@color/black"
+                 />
+
+            <TextView
+                android:id="@+id/tema_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/tema_input"
+                android:text="@string/tema_label" />
+
+            <EditText
+                android:id="@+id/tema_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/tema_helptext"
+                android:hint="@string/tema_helptext"
+                android:inputType="textCapSentences" />
+
+            <TextView
+                android:id="@+id/cilji_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/cilji_input"
+                android:text="@string/cilji_label" />
+
+            <EditText
+                android:id="@+id/cilji_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/cilji_helptext"
+                android:hint="@string/cilji_helptext"
+                android:inputType="textCapSentences" />
+
+            <TextView
+                android:id="@+id/prostor_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/prostor_input"
+                android:text="@string/prostor_label" />
+
+            <Spinner
+                android:id="@+id/prostor_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/vescine_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/vescine_input"
+                android:text="@string/vescine_label" />
+
+            <EditText
+                android:id="@+id/vescine_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/vescine_helptext"
+                android:gravity="top|start"
+                android:hint="@string/vescine_helptext"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:maxLines="10"
+                android:minLines="4" />
+
+            <TextView
+                android:id="@+id/kratek_opis__label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kratek_opis_lable" />
+
+            <EditText
+                android:id="@+id/kratek_opis_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/kratek_opis_helptext"
+                android:gravity="top|start"
+                android:hint="@string/kratek_opis_helptext"
+                android:inputType="textMultiLine"
+                android:lines="6"
+                android:maxLines="10"
+                android:minLines="4" />
+            <TextView
+                android:id="@+id/prisotni_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prisotni_label" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="start"
+                    tools:ignore="MissingConstraints"
+                    android:id="@+id/checkbox_otroci1">
+                </LinearLayout>
+
+            <Button
+                android:id="@+id/shrani_srecanje"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/shrani" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

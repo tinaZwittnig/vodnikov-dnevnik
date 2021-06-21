@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp">
+            <!-- Content here -->
+
+            <TextView
+                android:id="@+id/settings_heading"
+                style="@style/heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:text="@string/nastavitve_label" />
+
+            <TextView
+                android:id="@+id/ime_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:labelFor="@id/ime_input"
+                android:text="@string/ime_label"
+                android:textAlignment="textEnd" />
+
+            <EditText
+                android:id="@+id/ime_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/ime_helptext"
+                android:hint="@string/ime_helptext"
+                android:inputType="textCapSentences" />
+
+            <TextView
+                android:id="@+id/priimek_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/priimek_input"
+                android:text="@string/priimek_label" />
+
+            <EditText
+                android:id="@+id/priimek_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/priinek_helptext"
+                android:hint="@string/priinek_helptext"
+                android:inputType="textCapSentences" />
+
+            <TextView
+                android:id="@+id/tabornisko_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/tabornisko_input"
+                android:text="@string/tabornisko_label" />
+
+
+            <EditText
+                android:id="@+id/tabornisko_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/tabornisko_helptext"
+                android:hint="@string/tabornisko_helptext"
+                android:inputType="textCapSentences" />
+
+            <TextView
+                android:id="@+id/rod_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/rod_input"
+                android:text="@string/rod_label" />
+
+            <Spinner
+                android:id="@+id/rod_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/vod_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/vod_input"
+                android:text="@string/vod_label" />
+
+            <EditText
+                android:id="@+id/vod_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="@string/vod_helptext"
+                android:hint="@string/vod_helptext"
+                android:inputType="textCapSentences" />
+
+            <TextView
+                android:id="@+id/otroci_label"
+                style="@style/nastavitve_labels"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:text="@string/otroci_napis" />
+
+            <ListView
+                android:id="@+id/otroci_prikaz"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:clickable="true"
+                android:focusable="true" />
+
+            <ImageButton
+                android:id="@+id/dodaj_gumb"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/dodaj"
+                android:src="@android:drawable/ic_input_add" />
+
+            <Button
+                android:id="@+id/shrani_nastavitve"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/shrani" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

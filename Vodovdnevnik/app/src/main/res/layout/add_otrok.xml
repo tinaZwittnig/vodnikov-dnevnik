@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/otrok_ime_label"
+        style="@style/nastavitve_labels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/otrok_ime_input"
+        android:text="@string/ime_label" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "@string/ime_helptext"
+        android:id="@+id/otrok_ime_input"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/ime_helptext" />
+    <TextView
+        android:id="@+id/otrok_priimek_label"
+        style="@style/nastavitve_labels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/otrok_priimek_input"
+        android:text="@string/priimek_label" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "@string/priinek_helptext"
+        android:id="@+id/otrok_priimek_input"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/priinek_helptext" />
+    <TextView
+        android:id="@+id/otrok_naslov_label"
+        style="@style/nastavitve_labels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/otrok_priimek_input"
+        android:text="@string/naslov_label" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "@string/naslov_helptext"
+        android:id="@+id/otrok_naslov_input"
+        android:inputType="textMultiLine"
+        android:lines="2"
+        android:maxLines="4"
+        android:minLines="4"
+        android:autofillHints="@string/naslov_helptext" />
+    <TextView
+        android:id="@+id/otrok_tel_label"
+        style="@style/nastavitve_labels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/otrok_tel_starsi_input"
+        android:text="@string/telefonska_label" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint = "@string/phone_helptext"
+        android:id="@+id/otrok_tel_starsi_input"
+        android:inputType="phone"
+        android:autofillHints="@string/phone_helptext" />
+</LinearLayout>

@@ -1,0 +1,123 @@
+<resources>
+    <string name="app_name">Vodov dnevnik</string>
+    <string name="prejsnji">Pretekla srečanja</string>
+    <string name="prejsnji_sestanki">Bla bla bla</string>
+    <string name="dodaj_srecanj">Dodaj Srečanje</string>
+    <string name="prihodnje">Prihodnje aktivnosti</string>
+    <string name="otroci_napis">Seznam otrok:</string>
+    <string name="nastavitve_label">Nastavitve</string>
+    <string name="ime_label">Ime:</string>
+    <string name="ime_helptext">Tina</string>
+    <string name="priimek_label">Priimek:</string>
+    <string name="priinek_helptext">Novak</string>
+    <string name="tabornisko_label">Taborniško ime:</string>
+    <string name="tabornisko_helptext">Sivi Volk</string>
+    <string name="rod_label">Rod:</string>
+    <string name="vod_label">Vod:</string>
+    <string name="vod_helptext">Morski konjički</string>
+    <string name="dodaj_gumb">dodaj</string>
+    <string name="dodaj">Dodaj</string>
+    <string name="shrani">Shrani</string>
+    <string name="dodaj_label">Dodaj srečanje</string>
+    <string name="datum_label">Datum:</string>
+    <string name="datum">Izberi datum</string>
+    <string name="tema_label">Tema srečanja</string>
+    <string name="tema_helptext">Vozli in vezave</string>
+    <string name="cilji_label">Cilji srečanja:</string>
+    <string name="cilji_helptext">npr: naučimo se vsaj 3 vozle.</string>
+    <string name="prostor_label">Prostor:</string>
+    <string name="vescine_label">Narejene aktivnosti za veščine</string>
+    <string name="vescine_helptext"> Vozlar: otrok se nauči vsaj 3 vozle.</string>
+    <string name="kratek_opis_helptext">npr: igrali smo se štafeto z vozli.</string>
+    <string name="kratek_opis_lable">Kratek opis:</string>
+    <string name="prisotni_label">Prisotni:</string>
+    <string name="prikazi_vsa">Prikaži več</string>
+    <string name="koledar" />
+    <string name="vsa_preteka">Vsa pretekla srečanja</string>
+    <string name="naslov_helptext">Štefanova 9, Ljubljana</string>
+    <string name="phone_helptext">051123123</string>
+    <string name="naslov_label">Naslov:</string>
+    <string name="telefonska_label">telefonska številka staršev:</string>
+    <string name="napaka_omrezje">Preverite ali imate vlkjučen WiFi ali mobilne podatke</string>
+    <string name="napaka_povezava">Povezava s strežnikom ni uspela</string>
+    <string-array name="prostori_seznam">
+        <item>zunaj</item>
+        <item>na šoli</item>
+        <item>v rodovih prostorih</item>
+        <item>drugo</item>
+    </string-array>
+    <string-array name="rodovi_seznam">
+        <item>KOKRŠKI ROD</item>
+        <item>MAISTROV ROD</item>
+        <item>POKLJUŠKI ROD</item>
+        <item>RAŠIŠKI ROD</item>
+        <item>ROD ARAGONITNIH JEŽKOV</item>
+        <item>ROD BELA JADRA</item>
+        <item>ROD BELEGA KONJA</item>
+        <item>ROD BELI BOBER</item>
+        <item>ROD BIČKOVA SKALA</item>
+        <item>ROD BISTRE SAVINJE</item>
+        <item>ROD BISTREGA POTOKA</item>
+        <item>ROD BISTRIŠKIH GAMSOV</item>
+        <item>ROD DOBRE VOLJE</item>
+        <item>ROD DVEH REK</item>
+        <item>ROD ENAJSTA ŠOLA</item>
+        <item>ROD ČRNEGA MRAVA</item>
+        <item>ROD ČRNO JEZERO</item>
+        <item>ROD GORJANSKIH TABORNIKOV</item>
+        <item>ROD HEROJ VITEZ</item>
+        <item>ROD HUDI POTOK</item>
+        <item>ROD II. GRUPE ODREDOV</item>
+        <item>ROD II.SNOUB LJUBA ŠERCERJA</item>
+        <item>ROD JADRANSKIH STRAŽARJEV</item>
+        <item>ROD JEZERSKA ŠČUKA</item>
+        <item>ROD JEZERSKI ZMAJ</item>
+        <item>ROD KOROŠKIH JEKLARJEV</item>
+        <item>ROD KRANJSKEGA JEGLIČA</item>
+        <item>ROD KRAŠKIH J’RT</item>
+        <item>ROD KRAŠKIH VIHARNIKOV</item>
+        <item>ROD LILIJSKI GRIČ</item>
+        <item>ROD LOUIS ADAMIČ</item>
+        <item>ROD MIRNE REKE</item>
+        <item>ROD MLADI BORI</item>
+        <item>ROD MLINSKIH KAMNOV</item>
+        <item>ROD MOČVIRSKI TULIPANI</item>
+        <item>ROD MORSKIH VIHARNIKOV</item>
+        <item>ROD MRZLI STUDENEC</item>
+        <item>ROD ODPORNE ŽELVE</item>
+        <item>ROD PODKOVANI KRAP</item>
+        <item>ROD POLDE EBERL - JAMSKI</item>
+        <item>ROD PUNTARJEV</item>
+        <item>ROD PUSTI GRAD</item>
+        <item>ROD ROŽNIK</item>
+        <item>ROD SAMORASTNIKI</item>
+        <item>ROD SERGEJ MAŠERA</item>
+        <item>ROD SEVERNI KURIR</item>
+        <item>ROD SIVEGA VOLKA</item>
+        <item>ROD SIVIH JELŠ</item>
+        <item>ROD SKALNIH TABOROV</item>
+        <item>ROD SNEŽNIŠKIH RUŠEVCEV</item>
+        <item>ROD SOŠKIH MEJAŠEV</item>
+        <item>ROD SOTOČJE</item>
+        <item>ROD SREBRNA REKA</item>
+        <item>ROD SREBRNIH KRTOV</item>
+        <item>ROD SRNJAK</item>
+        <item>ROD STANE ŽAGAR - MLAJŠI</item>
+        <item>ROD STRAŽNIH OGNJEV</item>
+        <item>ROD SVOBODNEGA KAMNITNIKA</item>
+        <item>ROD TOPLI VRELEC</item>
+        <item>ROD TRNOVSKIH REGLJAČEV</item>
+        <item>ROD TRŠATI TUR</item>
+        <item>ROD UKROČENA REKA</item>
+        <item>ROD UPORNEGA PLAMENA</item>
+        <item>ROD VESELI VETER</item>
+        <item>ROD XI. SNOUB MILOŠA ZIDANŠKA</item>
+        <item>ROD ZELENA ROGLA</item>
+        <item>ROD ZELENE SREČE</item>
+        <item>ROD ZELENEGA JOŠTA</item>
+        <item> ROD ZELENEGA ŽIRKA</item>
+        <item>ZMAJEV ROD</item>
+    </string-array>
+
+
+</resources>
