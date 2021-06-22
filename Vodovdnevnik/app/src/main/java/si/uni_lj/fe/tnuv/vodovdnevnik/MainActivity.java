@@ -6,13 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +28,8 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
     private String urlNaslov;
     private String urlOtroci;
+    private String urlPrihodnja;
+    private String urlOtrok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
         addListenerOnButtonNastavitve();
         addListenerOnButtonSrecanje();
         addListenerOnPrikaziVec();
-        Log.i("Bla", "init");
         urlNaslov = getString(R.string.urlNaslov);
         urlOtroci = getString(R.string.urlOtrok);
+        urlPrihodnja = getString(R.string.urlprihodnja);
+
 
 
     }
@@ -46,14 +56,15 @@ public class MainActivity extends AppCompatActivity {
                 this::prikaziPodatke);
         new AsyncTaskExecutor().execute(new PrenosPodatkov(urlOtroci, this),
                 this::prikaziOtroke);
+        new AsyncTaskExecutor().execute(new PrenosPodatkov(urlPrihodnja, this),
+                this::prikaziPrihodnja);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private void prikaziOtroke(String kontakti) {
+    private void prikaziOtroke(String otroci_sez) {
         ListView listotroci = findViewById(R.id.seznam_otrok);
 
-        ArrayList<HashMap<String, String>> seznamKontaktov = new OtrociJsonParser().parseToArrayList(kontakti);
-        Log.i("otroci", kontakti);
+        ArrayList<HashMap<String, String>> seznamKontaktov = new OtrociJsonParser().parseToArrayList(otroci_sez);
         SimpleAdapter adapter = new SimpleAdapter(this,
                 seznamKontaktov,
                 R.layout.list_item,
@@ -64,17 +75,55 @@ public class MainActivity extends AppCompatActivity {
         listotroci.setAdapter(adapter);
         listotroci.callOnClick();
         listotroci.setOnItemClickListener((arg0, arg1, position, arg3) -> {
+            HashMap<String, String> podatki = seznamKontaktov.get(position);
+
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            String naslov = String.valueOf(seznamKontaktov.get(position));
+
+            String naslov = podatki.get("ime") + " " + podatki.get("priimek");
+            urlOtrok = getString(R.string.urlOtrok)+"/"+podatki.get("id")+"/sestanki";
             builder.setTitle(naslov);
-            builder.setView(R.layout.list_item);
-            builder.setPositiveButton(getString(R.string.shrani), (dialog, which) -> {
-
-            });
-            builder.setNegativeButton(getString(R.string.preklici), (dialog, which) -> dialog.cancel());
-
-            builder.show();
+            builder.setNegativeButton(getString(R.string.zapri), (dialog, which) -> dialog.cancel());
+            new AsyncTaskExecutor().execute(new PrenosPodatkov(urlOtrok, this),
+                    rezultat -> prikaziOtrok(rezultat, builder));
         });
+    }
+    private void prikaziOtrok(String srecanja, AlertDialog.Builder alert){
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.otrok_layout, null);
+        ListView listotroci = dialogView.findViewById(R.id.prisotnost_otork);
+        ListView listvescine = dialogView.findViewById(R.id.vescina_otork);
+
+        ArrayList<HashMap<String, String>> seznamSrecanj = new PrisotnostParser().parseToArrayList(srecanja);
+        ArrayList<HashMap<String, String>> seznamVescin = new PrisotnostParser().vescineParseToArrayList(srecanja);
+        SimpleAdapter adapter = new SimpleAdapter(this,
+                seznamSrecanj,
+                R.layout.prihodnja_layout,
+                new String[]{"tema"},
+                new int[]{R.id.prihodnje_datum}
+        );
+        SimpleAdapter adapter2 = new SimpleAdapter(this,
+                seznamVescin,
+                R.layout.prihodnja_layout,
+                new String[]{"vescine"},
+                new int[]{R.id.prihodnje_datum}
+        );
+
+        listotroci.setAdapter(adapter);
+        listvescine.setAdapter(adapter2);
+        alert.setView(dialogView);
+        alert.show();
+    }
+    private void prikaziPrihodnja(String srecanja){
+        ListView lv = findViewById(R.id.koledar);
+        ArrayList<HashMap<String, String>> seznamKontaktov = new PrihodnjaJsonParser().parseToArrayList(srecanja);
+        SimpleAdapter adapter = new SimpleAdapter(this,
+                seznamKontaktov,
+                R.layout.prihodnja_layout,
+                new String[]{"datum", "ura","kaj"},
+                new int[]{R.id.prihodnje_datum, R.id.prihodnje_ura,R.id.prihodnje_kaj}
+        );
+
+        lv.setAdapter(adapter);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -82,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
         ListView lv = findViewById(R.id.list);
         int dolzina = 4;
         ArrayList<HashMap<String, String>> seznamKontaktov = new SrecanjeJsonParser().parseToArrayList(kontakti, dolzina);
-        Log.i("Bla", kontakti);
         SimpleAdapter adapter = new SimpleAdapter(this,
                 seznamKontaktov,
                 R.layout.list_item,
@@ -93,16 +141,31 @@ public class MainActivity extends AppCompatActivity {
         lv.setAdapter(adapter);
         lv.callOnClick();
         lv.setOnItemClickListener((arg0, arg1, position, arg3) -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            String naslov = String.valueOf(seznamKontaktov.get(position));
-            builder.setTitle(naslov);
-            builder.setView(R.layout.srecanje_layout);
-            builder.setPositiveButton(getString(R.string.shrani), (dialog, which) -> {
 
-            });
-            builder.setNegativeButton(getString(R.string.preklici), (dialog, which) -> dialog.cancel());
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            LayoutInflater inflater = this.getLayoutInflater();
+            final View dialogView = inflater.inflate(R.layout.srecanje_layout, null);
+
+            HashMap<String, String> podatki = seznamKontaktov.get(position);
+            String naslov = String.valueOf(podatki.get("tema"));
+            builder.setTitle(naslov);
+            builder.setView(dialogView);
+            builder.setNegativeButton(getString(R.string.zapri), (dialog, which) -> dialog.cancel());
+            TextView vescine = dialogView.findViewById(R.id.vescine_srecanje);
+            vescine.setText(podatki.get("vescine"));
+            TextView opis = dialogView.findViewById(R.id.opis_srecanje);
+            opis.setText(podatki.get("opis"));
+            TextView datum = dialogView.findViewById(R.id.datum_srecanje);
+            datum.setText(podatki.get("datum"));
+            TextView cilji = dialogView.findViewById(R.id.cilji_srecanje);
+            cilji.setText(podatki.get("cilji"));
+            TextView prisotni = dialogView.findViewById(R.id.prisotni_srecanje);
+            prisotni.setText(podatki.get("otroci"));
+            TextView prostor = dialogView.findViewById(R.id.prostor_srecanje);
+            prostor.setText(podatki.get("prostor"));
 
             builder.show();
+
         });
     }
 

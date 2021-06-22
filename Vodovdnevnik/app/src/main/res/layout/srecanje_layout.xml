@@ -1,13 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:padding="10dp">
+
     <ImageView
+        android:id="@+id/date_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@android:drawable/ic_menu_search">
+        android:src="@android:drawable/ic_menu_my_calendar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/calendar"
+        app:tint="@color/green_rsv"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/datum_srecanje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/date_icon"
+        app:layout_constraintStart_toEndOf="@id/date_icon"
+        style="@style/nastavitve_labels"
+        android:padding="5dp"/>
+    <ImageView
+        android:id="@+id/article_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/article"
+        app:layout_constraintTop_toBottomOf="@id/date_icon"
+        app:layout_constraintStart_toStartOf="@id/date_icon"
+        app:tint="@color/green_rsv"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/opis_srecanje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/article_icon"
+        app:layout_constraintStart_toStartOf="@id/datum_srecanje"
+        style="@style/nastavitve_labels"
+        android:paddingBottom="5dp"/>
+    <ImageView
+        android:id="@+id/vescine_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/star_on"
+        app:layout_constraintTop_toBottomOf="@id/opis_srecanje"
+        app:layout_constraintStart_toStartOf="@id/article_icon"
+        app:tint="@color/green_rsv"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/vescine_srecanje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vescine"
+        app:layout_constraintTop_toTopOf="@id/vescine_icon"
+        app:layout_constraintStart_toStartOf="@id/datum_srecanje"
+        style="@style/nastavitve_labels"
+        android:paddingBottom="5dp"/>
+    <ImageView
+        android:id="@+id/cilji_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/stat_sys_upload_done"
+        app:layout_constraintTop_toBottomOf="@id/vescine_srecanje"
+        app:layout_constraintStart_toStartOf="@id/vescine_icon"
+        app:tint="@color/green_rsv"
+        style="@style/nastavitve_labels"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/cilji_srecanje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/cilji_icon"
+        app:layout_constraintStart_toStartOf="@id/datum_srecanje"
+        style="@style/nastavitve_labels"
+        android:paddingBottom="5dp"/>
+    <ImageView
+        android:id="@+id/prostor_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_mylocation"
+        app:layout_constraintTop_toBottomOf="@id/cilji_srecanje"
+        app:layout_constraintStart_toStartOf="@id/cilji_icon"
+        app:tint="@color/green_rsv"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/prostor_srecanje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/prostor_icon"
+        app:layout_constraintStart_toStartOf="@id/datum_srecanje"
+        style="@style/nastavitve_labels"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/prisotni_srecanje_napis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/prisotni_label"
+        app:layout_constraintTop_toBottomOf="@id/prostor_srecanje"
+        app:layout_constraintStart_toStartOf="@id/prostor_icon"
+        android:textColor="@color/green_rsv"
+        style="@style/nastavitve_labels"
+        android:textStyle="bold"
+        android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/prisotni_srecanje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/prisotni_srecanje_napis"
+        app:layout_constraintStart_toStartOf="@id/prisotni_srecanje_napis"
+        style="@style/nastavitve_labels"
+        android:paddingBottom="5dp"/>
 
-    </ImageView>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,4 +30,18 @@ public class AsyncTaskExecutor {
             }
         });
     }
+
+    /* Izvrši asinhrono opravilo, ki implementira vmesnik Callable.
+    Ko se to izvrši, pokliče objekt, ki implementira vmesnik Callback*/
+    public <R> void executeOne(Callable<R> callable) {
+        executor.execute(() -> {
+            final R rezultat;
+            try {
+                rezultat = callable.call();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 }

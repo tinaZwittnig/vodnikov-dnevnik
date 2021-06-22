@@ -8,12 +8,19 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -77,8 +84,26 @@ builder.show();
         button.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(NastavitveActivity.this);
             builder.setTitle(getString(R.string.dodaj_otroka));
-            builder.setView(R.layout.add_otrok);
+            LayoutInflater inflater = this.getLayoutInflater();
+            final View dialogView = inflater.inflate(R.layout.add_otrok, null);
+            builder.setView(dialogView);
             builder.setPositiveButton(getString(R.string.shrani), (dialog, which) -> {
+                HashMap<String, String> otrok = new HashMap<>();
+                EditText inputime = dialogView.findViewById(R.id.otrok_ime_input);
+                EditText inputpriimek = dialogView.findViewById(R.id.otrok_priimek_input);
+                EditText inputnaslov = dialogView.findViewById(R.id.otrok_naslov_input);
+                EditText inputstevilka = dialogView.findViewById(R.id.otrok_tel_starsi_input);
+                otrok.put("ime",inputime.getText().toString());
+                otrok.put("priimek",inputpriimek.getText().toString());
+                otrok.put("naslov",inputnaslov.getText().toString());
+                otrok.put("stevilka",inputstevilka.getText().toString());
+                String urlOtrok = getString(R.string.urlOtrok);
+                JSONObject json = new OtrociPostParser().parseToJson(otrok);
+                new AsyncTaskExecutor().executeOne(new PostPodatkov(urlOtrok, this, json));
+                String urlOtroci = getString(R.string.urlOtrok);
+                new AsyncTaskExecutor().execute(new PrenosPodatkov(urlOtroci, this),
+                        this::setListView);
+
 
             });
             builder.setNegativeButton(getString(R.string.preklici), (dialog, which) -> dialog.cancel());

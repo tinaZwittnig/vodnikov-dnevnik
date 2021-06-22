@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Vodov dnevnik</string>
     <string name="prejsnji">Pretekla srečanja</string>
-    <string name="prejsnji_sestanki">Bla bla bla</string>
+    <string name="prejsnji_sestanki">Bla</string>
     <string name="dodaj_srecanj">Dodaj Srečanje</string>
     <string name="prihodnje">Prihodnje aktivnosti</string>
     <string name="otroci_napis">Seznam otrok:</string>
@@ -32,7 +32,6 @@
     <string name="kratek_opis_lable">Kratek opis:</string>
     <string name="prisotni_label">Prisotni:</string>
     <string name="prikazi_vsa">Prikaži več</string>
-
     <string name="vsa_preteka">Vsa pretekla srečanja</string>
     <string name="naslov_helptext">Štefanova 9, Ljubljana</string>
     <string name="phone_helptext">051123123</string>
@@ -48,6 +47,13 @@
     <string name="urlOtrok">https://v8.si/sestanki/v1/1/otroci</string>
     <string name="uredi">uredi</string>
     <string name="izbrisi">Izbriši</string>
+    <string name="urlprihodnja">https://v8.si/sestanki/v1/1/prihodnja_srecanja/</string>
+    <string name="calendar">Koledar</string>
+    <string name="zapri">zapri</string>
+    <string name="vescine">vescine</string>
+    <string name="prisotnen">Prisoten na Srečanjih:</string>
+    <string name="osvojene">Osvojene veščine:</string>
+    <string name="urlSrecanja">https://v8.si/sestanki/v1/1/srecanja/</string>
     <string-array name="prostori_seznam">
         <item>zunaj</item>
         <item>na šoli</item>
